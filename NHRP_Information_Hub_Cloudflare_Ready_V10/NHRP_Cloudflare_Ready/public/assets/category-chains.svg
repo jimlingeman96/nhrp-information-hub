@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050b06"/>
+      <stop offset="55%" stop-color="#0b1f0f"/>
+      <stop offset="100%" stop-color="#14351a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="85%" r="65%">
+      <stop offset="0%" stop-color="#51ff2a" stop-opacity="0.35"/>
+      <stop offset="70%" stop-color="#51ff2a" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <rect width="1600" height="900" fill="url(#glow)"/>
+  <g opacity="0.18">
+    <path d="M0,780 L220,540 L360,620 L510,420 L700,540 L860,310 L1030,500 L1180,370 L1360,520 L1600,260 L1600,900 L0,900 Z" fill="#173420"/>
+  </g>
+  <rect x="36" y="36" width="1528" height="828" rx="28" fill="none" stroke="#58ff32" stroke-opacity="0.45" stroke-width="4"/>
+  <text x="86" y="118" font-family="Arial, Helvetica, sans-serif" font-size="44" font-weight="800" fill="#74ff4a" letter-spacing="5">NHRP</text>
+  <text x="86" y="170" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700" fill="#d6ebd6" opacity="0.9" letter-spacing="2">CHAIN ADD-INS & OWNERS</text>
+  <g transform="translate(210,230) scale(1.15)" fill="none" stroke="#61ff2a" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" filter="url(#softGlow)"><ellipse cx="146" cy="188" rx="92" ry="62" transform="rotate(-28 146 188)"/><ellipse cx="280" cy="188" rx="92" ry="62" transform="rotate(28 280 188)"/><path d="M208 188h18"/></g>
+  <text x="800" y="650" text-anchor="middle" font-family="Impact, Arial Black, sans-serif" font-size="130" fill="#ffffff" letter-spacing="4">ADD-IN CHAINS</text>
+  <rect x="470" y="690" width="660" height="10" rx="5" fill="#61ff2a" opacity="0.85" filter="url(#softGlow)"/>
+</svg>
