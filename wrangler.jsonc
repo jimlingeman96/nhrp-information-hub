@@ -16,8 +16,8 @@
     }
   ],
   "r2_buckets": [
-    {
-      "binding": "IMAGES"
-    }
-  ]
-}
+  {
+    "binding": "IMAGES",
+    "bucket_name": "nhrp-information-hub-images"
+  }
+]
