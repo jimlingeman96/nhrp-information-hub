@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#061008"><title>NHRP | Information Hub</title>
+<link rel="icon" href="assets/nhrp-logo.png"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="theme.css"><link rel="stylesheet" href="render-match.css">
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar" id="sidebar">
+  <div class="render-brand"><img src="assets/render-logo.jpg" alt="NHRP New Horizons Role Play Operations Hub"></div>
+  <div class="nav-group">
+    <button class="nav active" data-view="dashboard"><span class="ni">⌂</span> Dashboard</button>
+    <div class="nav-title">RECORDS</div>
+    <nav id="categoryNav"></nav>
+  </div>
+  <div class="side-bottom">
+    <button class="nav" data-view="logs"><span class="ni">↺</span> Activity Logs</button>
+    <div class="side-note">LOCAL PREVIEW · DATA SAVED IN THIS BROWSER</div>
+  </div>
+</aside>
+<div class="workspace">
+<header class="topbar"><button id="menuToggle" class="mobile-menu" aria-label="Toggle menu">☰</button><div><p class="eyebrow">NEW HORIZONS ROLE PLAY</p><h1 id="pageTitle">Dashboard</h1><p class="muted" id="pageSubtitle">Search and manage NHRP information.</p></div><div class="top-actions"><span class="local-indicator"><i></i> DISCORD STAFF</span><form method="POST" action="/auth/logout" style="display:inline"><button type="submit" class="outline small">Log out</button></form><button class="outline small" id="exportBtn">↓ Backup</button><button class="outline small" id="importBtn">↑ Restore</button><input id="importFile" type="file" accept=".json,application/json" hidden></div></header>
+<main id="main">
+<section class="dashboard" id="dashboardView">
+  <div class="render-banner"><img src="assets/render-hero.jpg" alt="NHRP New Horizons Role Play Operations Hub city skyline"></div>
+  <div class="render-welcome"><div><h2>Welcome back to NHRP</h2><p>Find records, paste screenshots, and keep everything organized.</p></div><span class="status-pill"><i></i> LOCAL PREVIEW</span></div>
+  <div class="search-wrap"><span class="search-symbol">⌕</span><input id="globalSearch" type="search" placeholder="Search player, business, weapon, Discord ID, add-in code..." autocomplete="off"><kbd>CTRL + K</kbd></div>
+  <div id="globalResults" class="global-results" hidden></div>
+  <div class="bulk-import-panel"><div><b>IMPORT EXISTING ADD-INS</b><p>Use the original NHRP Add Ins spreadsheet (.xlsx) or a CSV with the same columns. Automatically separates Vehicle and Weapon add-ins.</p></div><div class="bulk-import-buttons"><button class="outline" id="addinsTemplateBtn" type="button">↓ Add-In Template</button><button class="primary" id="bulkAddinsBtn" type="button">↑ Import Add-In List</button><input type="file" id="bulkAddinsFile" accept=".xlsx,.csv" hidden></div></div>
+  <div class="category-heading"><span>NHRP RECORD CATEGORIES</span></div>
+  <div class="render-tiles dashboard-tiles" id="dashboardTiles" aria-label="NHRP record categories"></div>
+  <div class="render-bottom simple-bottom">
+    <section class="panel activity-panel"><div class="panel-head"><h3><span class="green-icon">◷</span> RECENT UPDATES & LOGS</h3><button class="text-button" data-view="logs">View All →</button></div><div id="recentActivity" class="activity-list"></div></section>
+    <section class="panel action-panel"><div class="panel-head"><h3><span class="green-icon">✦</span> SCREENSHOT WORKFLOW</h3></div><div class="workflow-list"><div class="workflow-step"><b>1.</b> Copy the screenshot.</div><div class="workflow-step"><b>2.</b> Open a category record.</div><div class="workflow-step"><b>3.</b> Click the paste box and press <strong>Ctrl + V</strong>.</div><div class="workflow-step"><b>4.</b> Save the record.</div></div><div class="quick-actions"><button class="outline" id="quickWeapon">＋ Add-In Weapon</button><button class="outline" id="quickBusiness">＋ Business Owner</button><button class="outline" data-view="logs">◷ View Activity Logs</button></div></section>
+  </div>
+</section>
+<section id="recordsView" hidden><div class="records-head"><div><p class="eyebrow" id="categoryKicker">RECORDS</p><h2 id="categoryTitle">Records</h2><p class="muted" id="categoryDescription"></p></div><div class="record-actions"><button class="outline" type="button" id="csvTemplateBtn">↓ CSV Template</button><button class="outline" type="button" id="csvExportBtn">↓ Export CSV</button><button class="outline" type="button" id="csvImportBtn">↑ Import CSV</button><input id="csvImportInput" type="file" accept=".csv,text/csv" hidden><button class="primary" id="addRecordBtn">＋ Add Record</button></div></div><div class="toolbar"><label class="table-search"><span>⌕</span><input type="search" id="recordSearch" placeholder="Search records..."></label><span class="count" id="recordCount"></span></div><div class="record-grid" id="recordsGrid"></div></section>
+<section id="logsView" hidden><div class="records-head"><div><p class="eyebrow">HISTORY</p><h2>Activity Logs</h2><p class="muted">A history of added, edited, deleted, and imported records on this browser.</p></div><button class="outline" id="exportLogs">↓ Export Logs</button></div><div class="panel" id="logsList"></div></section>
+</main>
+<footer>New Horizons Role Play • NHRP Information Hub <span>Local preview · Data stays on this browser until Cloudflare storage is connected</span></footer>
+</div></div>
+<div class="modal-overlay" id="recordModal" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal-top"><div><p class="eyebrow" id="modalCategory">NHRP RECORD</p><h2 id="modalTitle">New Record</h2></div><button class="close" id="closeModal" aria-label="Close">×</button></div><form id="recordForm"><div class="form-grid" id="formFields"></div><div class="form-section"><div class="panel-head"><h3>Screenshots / Attachments</h3><span class="muted">Paste with Ctrl+V • drag/drop also works</span></div><div id="pasteZone" class="pastezone" tabindex="0">Copy the screenshot, click here, then press <strong>Ctrl + V</strong>.<small>You can also drag and drop an image into this box.</small></div><div class="file-fallback"><button type="button" class="outline small" id="chooseFilesBtn">Choose image file instead</button><input id="screenshotsInput" type="file" accept="image/png,image/jpeg,image/webp" multiple hidden></div><div id="screenshotPreviews" class="screenshot-previews"></div></div><div class="modal-actions"><button type="button" class="outline" id="cancelModal">Cancel</button><button type="submit" class="primary" id="saveRecordBtn">Save Record</button></div></form></div></div>
+<div id="infoModal" class="modal-overlay" hidden><div class="modal info-dialog" role="dialog" aria-modal="true" aria-labelledby="infoTitle"><div class="modal-top"><h2 id="infoTitle">Information</h2><button id="infoClose" class="close" type="button" aria-label="Close">×</button></div><div id="infoContent"></div></div></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script src="app.js"></script>
+</body></html>
