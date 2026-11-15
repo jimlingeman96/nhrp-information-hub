@@ -46,7 +46,7 @@ async function discordTokenRequest(env,params){
  if(!response.ok)throw new Error('Discord OAuth token exchange failed ('+response.status+')');return response.json();
 }
 async function discordGet(path,token){
- const res=await fetch('https://discord.com/api/v10'+path,{headers:{Authorization:'Bearer '+token,Accept:'application/json'},redirect:'error'});
+ const res=await fetch('https://discord.com/api/v10'+path,{headers:{Authorization:'Bearer '+token,Accept:'application/json'},redirect:'manual'});
  if(!res.ok)return {ok:false,status:res.status};
  return {ok:true,data:await res.json()};
 }
